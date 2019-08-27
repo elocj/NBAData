@@ -34,3 +34,6 @@ def calcScore(arr):
     return score
 
 app.run()
+
+# Implement MongoDB to read in JSON
+# Make it so I can pick any of the players
