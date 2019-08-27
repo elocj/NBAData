@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="35ae2baa-31c3-4df8-ba42-8955bc9b03d1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/NBAData.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/NBAData.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/static/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/js/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,11 +12,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend/NBAData.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="102" column="31" lean-forward="true" selection-start-line="102" selection-start-column="31" selection-end-line="102" selection-end-column="31" />
+            <state relative-caret-position="132">
+              <caret line="87" column="18" selection-start-line="87" selection-start-column="18" selection-end-line="87" selection-end-column="18" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -38,7 +36,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/static/js/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
@@ -70,8 +68,8 @@
         <option value="$PROJECT_DIR$/frontend/templates/index.html" />
         <option value="$PROJECT_DIR$/backend/test.sh" />
         <option value="$PROJECT_DIR$/backend/hey.py" />
-        <option value="$PROJECT_DIR$/backend/NBAData.py" />
         <option value="$PROJECT_DIR$/frontend/static/js/index.js" />
+        <option value="$PROJECT_DIR$/backend/NBAData.py" />
       </list>
     </option>
   </component>
@@ -150,12 +148,12 @@
       <option name="presentableId" value="Default" />
       <updated>1566841338448</updated>
       <workItem from="1566841339661" duration="24638000" />
-      <workItem from="1566927199526" duration="17544000" />
+      <workItem from="1566927199526" duration="19239000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42182000" />
+    <option name="totallyTimeSpent" value="43877000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -204,6 +202,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/static/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="20" lean-forward="true" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="78">
@@ -216,18 +221,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/NBAData.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="102" column="31" lean-forward="true" selection-start-line="102" selection-start-column="31" selection-end-line="102" selection-end-column="31" />
+        <state relative-caret-position="132">
+          <caret line="87" column="18" selection-start-line="87" selection-start-column="18" selection-end-line="87" selection-end-column="18" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/static/js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="20" lean-forward="true" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
         </state>
       </provider>
     </entry>

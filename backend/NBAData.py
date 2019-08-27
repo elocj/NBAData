@@ -84,12 +84,14 @@ def home():
 
 @app.route('/get_data', methods = ['GET', 'POST'])
 def get_data():
-    db.games.delete_many({})
-    for i in range(2):
-        db.games.delete_many({})
+    # db.games.delete_many({})
+    for i in range(100):
+        # db.games.delete_many({})
         date = datetime.now() - timedelta(days=265)
         date = date.strftime("%Y-%m-%d")
-        r = requests.get("https://www.balldontlie.io/api/v1/stats?player_ids[]=" + str(i) + "&per_page=10").json()
+        print(i)
+        payload = {'player_ids[]':i}
+        r = requests.get("https://www.balldontlie.io/api/v1/stats", params=payload).json()
         print(r)
         arr = []
         date = []
@@ -100,7 +102,7 @@ def get_data():
         arr = calcScore(arr)
         db.games.insert_one({'id': i, 'date': date, 'arr': arr})
     # return jsonify({'payload': {'id': id, 'date': date, 'arr': arr}})
-    return dumps(db.games.find_one({'id': 1}))
+    return dumps(db.games.find_one({'id': 23}))
     # return JSONEncoder().encode({'payload': db.games.find_one({'id': 1})})
 
 def calcScore(arr):
