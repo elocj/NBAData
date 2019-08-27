@@ -7,6 +7,8 @@ from flask import jsonify
 from pymongo import MongoClient
 from datetime import datetime, timedelta
 from flask import json
+from bson.json_util import dumps
+from bson.json_util import loads
 from flask import request
 from flask import redirect
 import json
@@ -48,40 +50,64 @@ app.config["DEBUG"] = True
 def home():
     date = datetime.now() - timedelta(days=265)
     date = date.strftime("%Y-%m-%d")
-    print(date)
-    r = requests.get("https://www.balldontlie.io/api/v1/stats?player_ids[]=115&per_page=25&start_date=" + date).json()
+    # print(date)
+    # r = requests.get("https://www.balldontlie.io/api/v1/stats?player_ids[]=237&per_page=10").json()
     # db.games.insert_one(r)
     # db.games.delete_many({})
-    fivestar = db.games.find({})
+    # fivestar = db.games.find({})
     # print(db.games.find_one({}))
-    dat = []
-    for doc in fivestar:
-        dat.append(doc)
-    return render_template("index.html", dat=dat)
+    # dat = []
+    # for doc in fivestar:
+    #     dat.append(doc)
+    return render_template("index.html")
+
+# @app.route('/get_data/<id>', methods = ['GET', 'POST'])
+# def get_data(id):
+#     db.games.delete_many({})
+#     date = datetime.now() - timedelta(days=265)
+#     date = date.strftime("%Y-%m-%d")
+#     # print(date)
+#     # id = id
+#     r = requests.get("https://www.balldontlie.io/api/v1/stats?player_ids[]=" + str(id) + "&per_page=10").json()
+#     print(r)
+#     arr = []
+#     date = []
+#     for data in r['data']:
+#         arr.append([data['pts'], data['reb'], data['stl'], data['turnover'], data['ast'], data['blk']])
+#         day = data['game']['date'].split('T')
+#         date.append(day[0].split('-'))
+#     arr = calcScore(arr)
+#     db.games.insert_one({'id': id, 'date': date, 'arr': arr})
+#     # return jsonify({'payload': {'id': id, 'date': date, 'arr': arr}})
+#     # db.games.delete_many({})
+#     return JSONEncoder().encode(db.games.find_one({'id': id}))
 
 @app.route('/get_data', methods = ['GET', 'POST'])
 def get_data():
-    date = datetime.now() - timedelta(days=265)
-    date = date.strftime("%Y-%m-%d")
-    print(date)
-    r = requests.get("https://www.balldontlie.io/api/v1/stats?player_ids[]=115&per_page=25&start_date=" + date).json()
-    arr = []
-    date = []
-    id = None
-    for data in r['data']:
-        arr.append([data['pts'], data['reb'], data['stl'], data['turnover'], data['ast'], data['blk']])
-        day = data['game']['date'].split('T')
-        date.append(day[0].split('-'))
-        id = data['id']
-    arr = calcScore(arr)
-    db.games.insert_one({'id': 127, 'date': date, 'arr': arr})
-    # return jsonify({'payload': {'date': date, 'arr': arr}})
-    return JSONEncoder().encode(db.games.find_one({'id': 127}))
+    db.games.delete_many({})
+    for i in range(2):
+        db.games.delete_many({})
+        date = datetime.now() - timedelta(days=265)
+        date = date.strftime("%Y-%m-%d")
+        r = requests.get("https://www.balldontlie.io/api/v1/stats?player_ids[]=" + str(i) + "&per_page=10").json()
+        print(r)
+        arr = []
+        date = []
+        for data in r['data']:
+            arr.append([data['pts'], data['reb'], data['stl'], data['turnover'], data['ast'], data['blk']])
+            day = data['game']['date'].split('T')
+            date.append(day[0].split('-'))
+        arr = calcScore(arr)
+        db.games.insert_one({'id': i, 'date': date, 'arr': arr})
+    # return jsonify({'payload': {'id': id, 'date': date, 'arr': arr}})
+    return dumps(db.games.find_one({'id': 1}))
+    # return JSONEncoder().encode({'payload': db.games.find_one({'id': 1})})
 
 def calcScore(arr):
     score = []
     for pts, reb, stl, turnover, ast, blk in arr:
-        score.append(pts * 1 + reb * 1.2 + stl * 3 + turnover * -1 + ast * 1.5 + blk * 3)
+        print(pts, reb, stl, turnover, ast, blk)
+        score.append(int(pts or 0) * 1 + int(reb or 0) * 1.2 + int(stl or 0) * 3 + int(turnover or 0) * -1 + int(ast or 0) * 1.5 + int(blk or 0) * 3)
     return score
 
 app.run()

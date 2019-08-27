@@ -1,9 +1,9 @@
 $(document).ready(function(){
     $.get("http://127.0.0.1:5000/get_data", function(data, status){
-        // data = JSON.parse(data);
-        alert("Data: " + JSON.stringify(data.payload.date) + "\nStatus: " + status);
-        date = data.payload.date;
-        arr = data.payload.arr;
+        data = JSON.parse(data);
+        alert("Data: " + JSON.stringify(data.date) + "\nStatus: " + status);
+        date = data.date;
+        arr = data.arr;
         var dataPoints = [];
         for (var i = 0; i < date.length; i++) {
             dataPoints.push({
