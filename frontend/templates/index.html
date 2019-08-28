@@ -8,11 +8,10 @@
 </head>
 <body>
     <div id="chartContainer" style="height: 300px; width: 100%;"></div>
-    {{ dat }}
-    <script>
-        var date = "{{ date }}"
-        var arr = "{{ arr }}"
-    </script>
+    <form method = "POST" action = "./write_players">
+        <input type = "text" name = "id">
+        <input type = "submit" value = "add">
+    </form>
     <script src = "{{ url_for('static', filename='js/index.js')}}"></script>
 </body>
 </html>
