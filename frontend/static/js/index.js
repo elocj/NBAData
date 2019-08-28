@@ -9,13 +9,14 @@ $(document).ready(function(){
                 document.getElementById("names").appendChild(opt);
         }
     });
-    $('#go').submit(function() {
-        $.get("http://127.0.0.1:5000/get_users", function(data, status){
-        let num = 10;
-        if(document.getElementById('num').value) {
-            num = document.getElementById('num').value;
-        }
-        alert(document.getElementById('num').value);
+    // $('#go').submit(function() {
+    let num = 10;
+    if(document.getElementById('num').value) {
+        num = document.getElementById('num').value;
+        // alert(document.getElementById('num').value);
+        // alert(document.getElementById('num').value);
+    }
+    $.get("http://127.0.0.1:5000/get_users", function(data, status){
         data = JSON.parse(data);
         // alert(JSON.stringify(data));
         for(let i = 0; i < data.length; i++) {
@@ -61,5 +62,5 @@ $(document).ready(function(){
             });
         }
     });
-    });
+    // });
 });
