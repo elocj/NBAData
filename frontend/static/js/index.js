@@ -11,7 +11,10 @@ $(document).ready(function(){
     });
     $('#go').submit(function() {
         $.get("http://127.0.0.1:5000/get_users", function(data, status){
-        let num = document.getElementById('num').value;
+        let num = 10;
+        if(document.getElementById('num').value) {
+            num = document.getElementById('num').value;
+        }
         alert(document.getElementById('num').value);
         data = JSON.parse(data);
         // alert(JSON.stringify(data));
