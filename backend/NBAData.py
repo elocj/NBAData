@@ -24,16 +24,33 @@ app.config["DEBUG"] = True
 def home():
     return render_template("index.html")
 
-@app.route('/get_data', methods = ['GET', 'POST'])
-def get_data():
-    return dumps(db.games.find_one({'id': 115}))
+@app.route('/get_data/<val>', methods = ['GET', 'POST'])
+def get_data(val):
+    return dumps(db.games.find_one({'id': int(val)}))
 
-@app.route('/write_players', methods = ['GET', 'POST'])
-def write_players():
+@app.route('/get_users', methods = ['GET', 'POST'])
+def get_users():
+    users = db.users.find({})
+    id = []
+    for user in users:
+        id.append(user)
+    return dumps(id)
+
+@app.route('/delete_player', methods = ['GET', 'POST'])
+def delete_player():
     if request.form:
-        id = 0
         try:
-            id += request.form.get('id')
+            id = int(request.form.get('id'))
+            db.users.delete_many({'userID': id})
+        except Exception as e:
+            print(e)
+    return redirect('/')
+
+@app.route('/write_player', methods = ['GET', 'POST'])
+def write_player():
+    if request.form:
+        try:
+            id = int(request.form.get('id'))
             db.users.insert_one({'userID': id})
         except Exception as e:
             print(e)
@@ -41,5 +58,4 @@ def write_players():
 
 app.run()
 
-# Implement MongoDB to read in JSON
-# Make it so I can pick any of the players
+# Now what i want to do is get a list of all/most players and their corresponding keys and then autofill suggest

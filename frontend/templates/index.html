@@ -7,10 +7,13 @@
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </head>
 <body>
-    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
-    <form method = "POST" action = "./write_players">
+    <form method = "POST" action = "./write_player">
         <input type = "text" name = "id">
         <input type = "submit" value = "add">
+    </form>
+    <form method = "POST" action = "./delete_player">
+        <input type = "text" name = "id">
+        <input type = "submit" value = "delete">
     </form>
     <script src = "{{ url_for('static', filename='js/index.js')}}"></script>
 </body>
