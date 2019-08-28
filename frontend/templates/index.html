@@ -8,7 +8,10 @@
 </head>
 <body>
     <form method = "POST" action = "./write_player">
-        <input type = "text" name = "id">
+        <input list = "names" type = "text" name = "id">
+        <datalist id="names">
+            <option value="Internet Explorer">
+          </datalist>
         <input type = "submit" value = "add">
     </form>
     <form method = "POST" action = "./delete_player">

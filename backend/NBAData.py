@@ -56,6 +56,14 @@ def write_player():
             print(e)
     return redirect('/')
 
+@app.route('/getPlayerKeys', methods = ['GET', 'POST'])
+def getPlayerKeys():
+    playerKeys = db.playerKeys.find({})
+    keys = []
+    for key in playerKeys:
+        keys.append(key)
+    return dumps(keys)
+
 app.run()
 
 # Now what i want to do is get a list of all/most players and their corresponding keys and then autofill suggest

@@ -1,7 +1,17 @@
 $(document).ready(function(){
-    $.get("http://127.0.0.1:5000/get_users", function(data, status){
+    $.get("http://127.0.0.1:5000/getPlayerKeys", function(data, status){
         data = JSON.parse(data);
         alert(JSON.stringify(data));
+        for(let i = 0; i < data.length; i++) {
+            let val = JSON.stringify(data[i].name);
+            var opt = document.createElement("option");
+                opt.value = val;
+                document.getElementById("names").appendChild(opt);
+        }
+    });
+    $.get("http://127.0.0.1:5000/get_users", function(data, status){
+        data = JSON.parse(data);
+        // alert(JSON.stringify(data));
         for(let i = 0; i < data.length; i++) {
             let val = JSON.stringify(data[i].userID);
             $.get("http://127.0.0.1:5000/get_data/" + val, function(data, status){
