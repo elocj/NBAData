@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Fantasy Tracker</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </head>
@@ -10,9 +10,12 @@
     <form method = "POST" action = "./write_player">
         <input list = "names" type = "text" name = "id">
         <datalist id="names">
-            <option value="Internet Explorer">
-          </datalist>
+        </datalist>
         <input type = "submit" value = "add">
+    </form>
+    <form id = "go" onsubmit="return false">
+        <input type = "text" name = "num" id = 'num'>
+        <input type = "submit" value = "start">
     </form>
     <form method = "POST" action = "./delete_player">
         <input type = "text" name = "id">

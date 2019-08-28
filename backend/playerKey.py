@@ -2,6 +2,7 @@ import requests
 from pymongo import MongoClient
 from bson.json_util import dumps
 
+
 client = MongoClient(port=27017)
 db = client.players
 

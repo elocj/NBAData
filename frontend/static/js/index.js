@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $.get("http://127.0.0.1:5000/getPlayerKeys", function(data, status){
         data = JSON.parse(data);
-        alert(JSON.stringify(data));
+        // alert(JSON.stringify(data));
         for(let i = 0; i < data.length; i++) {
             let val = JSON.stringify(data[i].name);
             var opt = document.createElement("option");
@@ -9,7 +9,10 @@ $(document).ready(function(){
                 document.getElementById("names").appendChild(opt);
         }
     });
-    $.get("http://127.0.0.1:5000/get_users", function(data, status){
+    $('#go').submit(function() {
+        $.get("http://127.0.0.1:5000/get_users", function(data, status){
+        let num = document.getElementById('num').value;
+        alert(document.getElementById('num').value);
         data = JSON.parse(data);
         // alert(JSON.stringify(data));
         for(let i = 0; i < data.length; i++) {
@@ -33,7 +36,13 @@ $(document).ready(function(){
                         x: new Date(date[i][0], date[i][1], date[i][2]),
                         y: arr[i]
                     });
+                    // alert(new Date(date[i][0], date[i][1], date[i][2]));
+                    // alert(arr[i]);
                 }
+                dataPoints.sort(function(a,b){
+                  return new Date(a.x) - new Date(b.x)
+                });
+                dataPoints = dataPoints.slice(dataPoints.length - num, dataPoints.length);
                 var chart = new CanvasJS.Chart(val,
                     {
                         title:{
@@ -48,5 +57,6 @@ $(document).ready(function(){
                 chart.render();
             });
         }
+    });
     });
 });
