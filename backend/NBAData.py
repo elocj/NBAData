@@ -85,7 +85,25 @@ def home():
 @app.route('/get_data', methods = ['GET', 'POST'])
 def get_data():
     # db.games.delete_many({})
-    for i in range(100):
+    # for j in range(10):
+    #     for i in range(j * 50, (j + 1) * 50):
+    #         # db.games.delete_many({})
+    #         date = datetime.now() - timedelta(days=265)
+    #         date = date.strftime("%Y-%m-%d")
+    #         print(i)
+    #         payload = {'player_ids[]':i}
+    #         r = requests.get("https://www.balldontlie.io/api/v1/stats", params=payload).json()
+    #         print(r)
+    #         arr = []
+    #         date = []
+    #         for data in r['data']:
+    #             arr.append([data['pts'], data['reb'], data['stl'], data['turnover'], data['ast'], data['blk']])
+    #             day = data['game']['date'].split('T')
+    #             date.append(day[0].split('-'))
+    #         arr = calcScore(arr)
+    #         db.games.insert_one({'id': i, 'date': date, 'arr': arr})
+    # return jsonify({'payload': {'id': id, 'date': date, 'arr': arr}})
+    for i in range(100, 150):
         # db.games.delete_many({})
         date = datetime.now() - timedelta(days=265)
         date = date.strftime("%Y-%m-%d")
@@ -101,8 +119,7 @@ def get_data():
             date.append(day[0].split('-'))
         arr = calcScore(arr)
         db.games.insert_one({'id': i, 'date': date, 'arr': arr})
-    # return jsonify({'payload': {'id': id, 'date': date, 'arr': arr}})
-    return dumps(db.games.find_one({'id': 23}))
+    return dumps(db.games.find_one({'id': 120}))
     # return JSONEncoder().encode({'payload': db.games.find_one({'id': 1})})
 
 def calcScore(arr):
