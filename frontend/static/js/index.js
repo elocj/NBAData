@@ -57,7 +57,7 @@ $(document).ready(function(){
                         title:{
                             text: "(" + id + ") " + name +  " with the shot boy"
                         },
-                        theme: "dark1",
+                        // theme: "dark1",
                         axisY: {
                             title: "Fantasy Score",
                             // valueFormatString: "#0,,.",
