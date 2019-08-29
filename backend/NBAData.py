@@ -65,5 +65,3 @@ def getPlayerKeys():
     return dumps(keys)
 
 app.run()
-
-# now what I want to do is take in the number of games to show

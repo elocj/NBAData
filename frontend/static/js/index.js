@@ -47,10 +47,25 @@ $(document).ready(function(){
                   return new Date(a.x) - new Date(b.x)
                 });
                 dataPoints = dataPoints.slice(dataPoints.length - num, dataPoints.length);
+                let avg = 0;
+                for(let i = 0; i < dataPoints.length; i++) {
+                    avg += dataPoints[i].y;
+                }
+                avg /= dataPoints.length;
                 var chart = new CanvasJS.Chart(val,
                     {
                         title:{
                             text: "(" + id + ") " + name +  " with the shot boy"
+                        },
+                        theme: "dark1",
+                        axisY: {
+                            title: "Fantasy Score",
+                            // valueFormatString: "#0,,.",
+                            // suffix: "mn",
+                            stripLines: [{
+                                value: avg,
+                                label: "Average"
+                            }]
                         },
                         data: [{
                             type: "line",
